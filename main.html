@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+    <div class="container" >
+    
+        <div class="left">
+            <h1 >Learn to code by <br/> watching others</h1>
+            <p>see how experienced develoopers solve problems in real time.<br> watching scripted tutoriels is great but understanding how <br/> developpers think is invaluable </p>
+        </div>
+    
+
+
+
+
+        <div class="right">
+
+            <p id="par1"> <b>Try it free 7 days</b> then $20/mo. thereafter </p>
+            
+            <form id="form" class="form">
+                <label id="FnameLab" for="Fname">
+                    <svg class="svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+                </label>
+                <input type="text" name="Fname" placeholder="First name" id="Fname">
+                <span class="errClass">First name cannot be empty</span>
+
+                
+                <label  id="LnameLab" for="Lname">
+                    <svg class="svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+                </label>
+                <input type="text" name="Lname" placeholder="Last name" id="Lname">
+                <span class="errClass" >Last name cannot be empty</span>
+
+                
+                <label id="emailLab" for="email">
+                    <svg class="svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+                </label>
+                <input type="email"  name="email" placeholder="Email" id="email">
+                <span class="errClass" >Email cannot be empty</span>
+
+                
+                <label id="passLab" for="pass">
+                    <svg class="svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+                </label>
+                <input type="text" name="pass" placeholder="Password" id="pass">
+                <span class="errClass" >Password name cannot be empty</span>
+
+                
+
+                <button class="btn">claim your free trial</button>
+
+                <p>By clicking the button you're agreeing to our <span class="redColor">Terms and Services </span></p>
+            </form>
+
+
+        </div> 
+    
+
+        
+    </div>
+ 
+        <script>
+          
+        const frm = document.forms["form"];
+          
+
+        frm.addEventListener("submit" ,(e) => {
+
+            e.preventDefault()
+        
+            for(var i =0 ; i<frm.length ; i++){  
+
+                if ( frm[i].value === "" ){
+
+                    const input_id = frm[i].id
+
+                    const ShowLabel = document.getElementById(input_id+"Lab")
+
+                    ShowLabel.style.display = "block"
+
+                    frm[i].style.border= "2px solid red"
+
+                    if(frm[i].type === "email"){
+                    
+                        frm[i].placeholder = "email@example/com"
+                        frm[i].classList.add("PlaceHColor")
+                        frm[i].setAttribute( "class" ,"PlaceHColor")
+
+                    }else{
+                            frm[i].placeholder= ""
+
+                    }
+
+
+
+                    const  spans = document.getElementsByClassName("errClass")
+                    console.log(spans)
+                  
+                    Array.from(spans).forEach((element) => {
+
+                        element.classList.add("errMessage")
+                      
+                    }
+                    )
+
+                    
+
+                }
+            }
+        })
+
+
+
+
+            frm.addEventListener("input", (e) => {
+            
+                if (e.target.type !== "submit") {
+                
+                    const inputField = e.target;
+                
+                    if (inputField.value !== "") {
+                        
+                        const Get_input_id = inputField.id;
+                        
+                        const hide_label = document.getElementById(Get_input_id + "Lab");
+                                            
+                        hide_label.style.display = "none";
+                    
+                        document.getElementById(Get_input_id).style.border = "0.1px solid hsl(249, 10%, 26%)";
+                
+                }
+            }
+            });
+
+         
+        
+
+         
+
+        
+
+
+        
+        
+
+
+
+
+
+        </script>
+
+
+</body>
+</html>
